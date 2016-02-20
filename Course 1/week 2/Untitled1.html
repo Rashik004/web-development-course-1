@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="CoffeeCup HTML Editor (www.coffeecup.com)">
+    <meta name="dcterms.created" content="Fri, 19 Feb 2016 08:16:04 GMT">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <title>Color Guessing game!!!</title>
+    
+    <script>
+			var cl=["Aqua", "Black", "Cyan","DarkBlue", "Green", "Indigo", "LawnGreen", "Lime", "Navy", "Red", "Silver", "Yellow"];
+			var target;
+			var guess=0;
+			var inp;
+			var inp_txt;
+      var finished=false;
+			function do_game()
+      {
+          var random_number=Math.random()*cl.length;
+          random_number=Math.floor(random_number);
+          target=cl[random_number];
+          alert("The color I'm thinking of is "+target);
+          var welcome;
+          welcome="I am guessing a color from the list.\n\n";
+          welcome+=cl[0];
+          
+          for(i=1;i<cl.length; i++)
+            welcome+=", "+cl[i];
+          welcome+="\n\nWhat element am I thinking of??";
+          //alert(welcome);
+          //alert(random_number);
+          while(!finished)
+          {
+            inp_txt=prompt(welcome);
+            guess=guess+1;
+            //inp=parseInt(inp_txt);
+            finished=checkAns();
+            //if(cl[inp])
+          }
+      }
+
+      function checkAns()
+      {
+        if(inp_txt==target)
+        {
+          alert("Bravo!!!\n\nYou got the answer!!!");
+          return true;
+        }
+        var pos=-1;
+        for(i=0;i<cl.length; i++)
+        {
+          if(cl[i]==inp_txt)
+          {
+            pos=i;
+            break;
+          }
+        }
+        if(pos==-1)
+          alert("I don't recognize the color you entered");
+        else if(inp_txt<target)
+          alert("Your entered color is alphabetically smaller than the color i entered");
+        else
+          alert("Your entered color is alphabetically greater than the color i entered");
+        return false;
+
+      }
+      do_game();
+
+	</script>
+
+  </head>
+  <body>
+
+  </body>
+</html>

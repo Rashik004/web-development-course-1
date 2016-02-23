@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Matching Part 3</title>
+       
+        <style>
+            img {
+                    position:absolute;
+                    width: 100px;
+                    height: 100px;
+                }
+            #rightDiv {
+                      width:500px; 
+                      height:500px;
+                      position:absolute;
+                      left: 500px;
+                border-left: 1px solid black; 
+
+
+                    }
+
+            #leftDiv {
+                      
+                      width:500px; 
+                      height:500px;
+                      position:absolute;
+
+                    }
+        </style>
+
+</head>
+    <div style="height: 100px;">
+        <h1 style="text-align: center;">Matching game!!!</h1>
+        <p>click on the extra smiling face on the left:</p>
+    </div>    
+    <body id="theBody" onload="generateFace()">
+    <div id="leftDiv"> </div>
+    <div id="rightDiv"></div>
+    <script type="text/javascript">
+
+        var numberOfFaces=5;
+        var divHeight=500;
+        var divWidth=500;
+        var imgHeight=100;
+        var imgWidth=100;
+
+        var the_body = document.getElementById("theBody");
+        var theLeftSide=document.getElementById("leftDiv");
+        var theRightSide=document.getElementById("rightDiv");
+
+
+     
+        function generateFace()
+        {
+             
+            console.log("sdasdasdqwre");
+            //alert("asd");
+            for(var i=1; i<=numberOfFaces; i++)
+            {
+                var nowImage=document.createElement("img");
+
+                var random_top=Math.random()*(divHeight-imgHeight);
+                var random_top=Math.floor(random_top);
+
+                var random_left=Math.random()*(divWidth-imgWidth);
+                var random_left=Math.floor(random_left);
+
+                nowImage.src="http://home.cse.ust.hk/~rossiter/mooc/matching_game/smile.png";
+                nowImage.style.top=random_top+"px";
+                nowImage.style.left=random_left+"px";
+                nowImage.style.width=imgWidth+"px";
+                nowImage.style.height=imgHeight+"px";
+
+                theLeftSide.appendChild(nowImage);
+            }
+            var leftSideImages = theLeftSide.cloneNode(true);
+            leftSideImages.removeChild(leftSideImages.lastChild);
+            theRightSide.appendChild(leftSideImages);
+        }
+
+        function printChildInfo(parent)
+        {
+          var childs = parent.childNodes;
+          console.log(childs.length);
+          for (var i = 0; i < childs.length; ++i)
+          {
+            var c = childs[i];
+
+            console.log([c.nodeName, c.nodeValue]);
+          }
+        }
+
+    </script>
+    
+    
+    </body>
+</html>
